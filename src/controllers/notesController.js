@@ -1,19 +1,26 @@
 import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
 import { notFoundHandler } from '../middleware/notFoundHandler.js';
+import createError from 'http-errors';
+
 export const getAllNotes = async (req, res) => {
   const notes = await Note.find();
   res.status(200).json(notes);
 };
 
-export const getNoteById = async (req, res) => {
-  const { noteId } = req.params;
-  const note = await Note.findById(noteId);
+export const getNoteById = async (req, res, next) => {
+  try {
+    const { noteId } = req.params;
+    const note = await Note.findById(noteId);
 
-  if (!note) {
-    return res.status(404).json(notFoundHandler);
+    if (!note) {
+      throw createError(404, `Note with id ${noteId} not found`);
+    }
+
+    res.status(200).json(note);
+  } catch (error) {
+    next(error);
   }
-  res.status(200).json(note);
 };
 
 export const createNote = async (req, res) => {
