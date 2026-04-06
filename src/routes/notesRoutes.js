@@ -11,7 +11,7 @@ import { getAllNotesSchema,
   createNoteSchema,
   updateNoteSchema, } from '../validations/notesValidation.js';
 import { celebrate } from 'celebrate';
-import { authenticate } from '../middlewares/authenticate.js';
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = Router();
 
