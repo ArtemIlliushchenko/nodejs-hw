@@ -1,4 +1,3 @@
-import { connectMongoDB } from './db/connectMongoDB.js';
 import { Session } from '../models/session.js';
 import crypto from 'crypto';
 import { FIFTEEN_MINUTES } from '../constants/time.js';

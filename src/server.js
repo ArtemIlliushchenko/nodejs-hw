@@ -11,6 +11,7 @@ import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 import { errors } from 'celebrate';
+import authRoutes from './routes/authRoutes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -23,7 +24,8 @@ app.use(logger);
 
 // Routes
 app.use(notesRoutes);
-
+app.use('/api/auth', authRoutes);     
+app.use('/api/notes', notesRoutes);
 // Handlers
 app.use(notFoundHandler);
 app.use(errors());
