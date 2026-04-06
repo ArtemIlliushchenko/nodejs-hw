@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import express from 'express';
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 import helmet from 'helmet';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 app.use(logger);
 
