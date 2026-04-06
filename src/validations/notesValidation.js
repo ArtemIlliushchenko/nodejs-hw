@@ -40,7 +40,7 @@ export const updateNoteSchema = {
   }),
 [Segments.BODY]: Joi.object({
 title: Joi.string().min(1).optional(),
-content: Joi.string().allow('').optional,
+content: Joi.string().allow('').optional(),
 tag: Joi.string().valid(...TAGS).optional(),
-}),
+}).min(1)
 };
