@@ -8,7 +8,7 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-i
+
 
 export const registerUser = async (req, res) => {
   const { email, password } = req.body;
